@@ -7,11 +7,11 @@ unsigned long fsrResistance;
 float fsrConductance;
 float fsrForce;
 
-LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+LiquidCrystal lcd(12,11,5,4,3,2); //LCD connected to these pins
 
 void setup(void)
 {
-  lcd.begin(20,4); //since we are using 20x4 lcd
+  lcd.begin(16,2); //since we are using 16x2 lcd
 }
 
 void loop()
