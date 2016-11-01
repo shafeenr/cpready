@@ -1,4 +1,7 @@
 #include <LiquidCrystal.h> // Call the LCD header
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // LCD connected to these pins
+int fsrPin = 0;     // the FSR and 10K pulldown are connected to a0
+int fsrReading;     // the analog reading from the FSR resistor divider
 
 // NB: ALL NOTES DEFINED WITH STANDARD ENGLISH NAMES, EXCEPT FROM "A" 
 //THAT IS CALLED WITH THE ITALIAN NAME "LA" BECAUSE A0,A1...ARE THE ANALOG PINS ON ARDUINO.
@@ -117,10 +120,11 @@ pinMode(8, OUTPUT);
 pinMode(9, OUTPUT);       
 digitalWrite(9,LOW);
 lcd.begin(16,2); //since we are using 16x2 lcd
+lcd.clear();
 }
 
 // the loop routine runs over and over again forever:
-void loop() {
+void loop(void) {
   //tone(pin, note, duration)
     tone(8,LA3,Q); 
     delay(1+Q); //delay duration should always be 1 ms more than the note in order to separate them.
