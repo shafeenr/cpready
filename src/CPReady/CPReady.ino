@@ -9,8 +9,13 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //LCD connected to these pins
 //THAT IS CALLED WITH THE ITALIAN NAME "LA" BECAUSE A0,A1...ARE THE ANALOG PINS ON ARDUINO.
 // (Ab IS CALLED Ab AND NOT LAb)
 #define LA3 220.00
+<<<<<<< HEAD
 // DURATION OF THE NOTES
 #define BPM 120    //  you can change this value changing all the others
+=======
+// DURATION OF THE NOTES 
+#define BPM 100    //  you can change this value changing all the others
+>>>>>>> ccfe93b57e3079da64ffd82e7add2e4b71209bd4
 #define H 2*Q //half 2/4
 #define Q 60000/BPM //quarter 1/4 
 #define E Q/2   //eighth 1/8
