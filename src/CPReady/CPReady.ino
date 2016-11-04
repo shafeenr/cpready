@@ -109,7 +109,7 @@ int fsrMax = 0;           // maximum sensor value
 #define D8  4698.64
 #define Eb8 4978.03
 // DURATION OF THE NOTES 
-#define BPM 120    //  you can change this value changing all the others
+#define BPM 175    //  you can change this value changing all the others
 #define H 2*Q //half 2/4
 #define Q 60000/BPM //quarter 1/4 
 #define E Q/2   //eighth 1/8
@@ -145,162 +145,16 @@ fsrReading = analogRead(fsrPin);
   // Scale could be adjusted for more accurate force output when calibration is more controlled.
   fsrReading = constrain(fsrReading, 0.0, 10.0);   // no readings above or below the 0-10 scale
   
+  lcd.setCursor(0,0);
+  lcd.print("Aim for 10");
+  
   lcd.setCursor(0,1); //output will be on lower line of LCD
- 
+  
   lcd.print("Pressure = ");
   lcd.print(fsrReading);  // LCD will display the pressure reading
   delay(250);  // Time between reading updates. 
+   tone(8,LA3,Q); 
+    delay(1+H);
   // LCD has trouble at really fast intervals. Use serial for that.  
-  
-  //tone(pin, note, duration)
-    tone(8,LA3,Q); 
-    delay(1+Q); //delay duration should always be 1 ms more than the note in order to separate them.
-    tone(8,LA3,Q);
-    delay(1+Q);
-    tone(8,LA3,Q);
-    delay(1+Q);
-    tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    
-    tone(8,LA3,Q);
-    delay(1+Q);
-    tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,LA3,H);
-    delay(1+H);
-    
-    tone(8,E4,Q); 
-    delay(1+Q); 
-    tone(8,E4,Q);
-    delay(1+Q);
-    tone(8,E4,Q);
-    delay(1+Q);
-    tone(8,F4,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    
-    tone(8,Ab3,Q);
-    delay(1+Q);
-    tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,LA3,H);
-    delay(1+H);
-    
-    tone(8,LA4,Q);
-    delay(1+Q);
-    tone(8,LA3,E+S);
-    delay(1+E+S);
-    tone(8,LA3,S);
-    delay(1+S);
-    tone(8,LA4,Q);
-    delay(1+Q);
-    tone(8,Ab4,E+S);
-    delay(1+E+S);
-    tone(8,G4,S);
-    delay(1+S);
-    
-    tone(8,Gb4,S);
-    delay(1+S);
-    tone(8,E4,S);
-    delay(1+S);
-    tone(8,F4,E);
-    delay(1+E);
-    delay(1+E);//PAUSE
-    tone(8,Bb3,E);
-    delay(1+E);
-    tone(8,Eb4,Q);
-    delay(1+Q);
-    tone(8,D4,E+S);
-    delay(1+E+S);
-    tone(8,Db4,S);
-    delay(1+S);
-    
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,B3,S);
-    delay(1+S);
-    tone(8,C4,E);
-    delay(1+E);
-    delay(1+E);//PAUSE QUASI FINE RIGA
-    tone(8,F3,E);
-    delay(1+E);
-    tone(8,Ab3,Q);
-    delay(1+Q);
-    tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,LA3,S);
-    delay(1+S);
-    
-    tone(8,C4,Q);
-    delay(1+Q);
-     tone(8,LA3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,E4,H);
-    delay(1+H);
-    
-     tone(8,LA4,Q);
-    delay(1+Q);
-    tone(8,LA3,E+S);
-    delay(1+E+S);
-    tone(8,LA3,S);
-    delay(1+S);
-    tone(8,LA4,Q);
-    delay(1+Q);
-    tone(8,Ab4,E+S);
-    delay(1+E+S);
-    tone(8,G4,S);
-    delay(1+S);
-    
-    tone(8,Gb4,S);
-    delay(1+S);
-    tone(8,E4,S);
-    delay(1+S);
-    tone(8,F4,E);
-    delay(1+E);
-    delay(1+E);//PAUSE
-    tone(8,Bb3,E);
-    delay(1+E);
-    tone(8,Eb4,Q);
-    delay(1+Q);
-    tone(8,D4,E+S);
-    delay(1+E+S);
-    tone(8,Db4,S);
-    delay(1+S);
-    
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,B3,S);
-    delay(1+S);
-    tone(8,C4,E);
-    delay(1+E);
-    delay(1+E);//PAUSE QUASI FINE RIGA
-    tone(8,F3,E);
-    delay(1+E);
-    tone(8,Ab3,Q);
-    delay(1+Q);
-    tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    
-    tone(8,LA3,Q);
-    delay(1+Q);
-     tone(8,F3,E+S);
-    delay(1+E+S);
-    tone(8,C4,S);
-    delay(1+S);
-    tone(8,LA3,H);
-    delay(1+H);
-    
-    delay(2*H);
-    
+  lcd.clear();
 }
