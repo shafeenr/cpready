@@ -25,7 +25,6 @@ lcd.begin(16, 2);   //Turn on the LCD
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("Coded by Shafeen");
-    lcd.setCursor(0,1);
     // calibrate during the first five seconds DON'T FORGET TO PUSH THE FSR HARD!!!
   while (millis() < 5000) {
     fsrReading = analogRead(fsrPin);
@@ -56,7 +55,7 @@ fsrReading = analogRead(fsrPin);
   
   lcd.setCursor(0,1); //output will be on lower line of LCD
  
-  lcd.print("Pressure = ");
+  lcd.print("Pressure - ");
   lcd.print(fsrReading);  // LCD will display the pressure reading
   delay(250);  // Time between reading updates. 
   // LCD has trouble at really fast intervals. Use serial for that.  
