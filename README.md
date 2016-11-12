@@ -1,4 +1,4 @@
-![CPReady Logo](docs/images/logo.png)
+![CPReady Logo](docs/images/logo.jpg)
 ## By Shafeen Rahman and Yehya Qureshi
 
 Information can be found on our website.
