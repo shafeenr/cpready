@@ -18,6 +18,12 @@ void setup() {
 
   lcd.begin(16, 2);
   lcd.backlight();
+  lcd.clear();
+
+  lcd.setCursor(0, 0);
+  lcd.print("PRESS HARD NOW");
+  lcd.setCursor(0, 1);
+  lcd.print("CALIBRATING...");
 
   while (millis() < 5000) {
     fsrReading = analogRead(fsrPin);
@@ -37,10 +43,8 @@ void loop() {
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("AIM FOR 10");
+  fsrReading = constrain((map((analogRead(fsrPin)), fsrMin, fsrMax, 0.0, 10.0)), 0.0, 10.0);
 
-  fsrReading = analogRead(fsrPin);
-  fsrReading = map(fsrReading, fsrMin, fsrMax, 0.0, 10.0);
-  fsrReading = constrain(fsrReading, 0.0, 10.0);
   lcd.setCursor(0, 1);
   lcd.print("Pressure: ");
   lcd.print(fsrReading);
