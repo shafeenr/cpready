@@ -1,17 +1,19 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-#define LA3 220.00
-#define BPM 100
-#define Q 60000 / BPM
-#define H 2*Q
+#define fsrPin 0
 
 LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
-int fsrPin = 0;
 int fsrReading;
 int fsrMin = 1023;
 int fsrMax = 0;
+
+long fsrPreviousMillis = 0;
+long fsrInterval = 250;
+
+long buzzerPreviousMillis = 0;
+long buzzerInterval = 1200;
 
 void setup() {
   pinMode(8, OUTPUT);
@@ -40,16 +42,20 @@ void setup() {
 }
 
 void loop() {
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("AIM FOR 10");
-  fsrReading = constrain((map((analogRead(fsrPin)), fsrMin, fsrMax, 0.0, 10.0)), 0.0, 10.0);
+  unsigned long currentMillis = millis();
 
-  lcd.setCursor(0, 1);
-  lcd.print("Pressure: ");
-  lcd.print(fsrReading);
-  delay(250);
+  if (currentMillis - fsrPreviousMillis > fsrInterval) {
+    fsrPreviousMillis = currentMillis;
+    fsrReading = constrain((map((analogRead(fsrPin)), fsrMin, fsrMax, 0.0, 10.0)), 0.0, 10.0);
+    lcd.clear();
+    lcd.print("AIM FOR 10");
+    lcd.setCursor(0, 1);
+    lcd.print("Pressure: ");
+    lcd.print(fsrReading);
+  }
 
-  tone(8, LA3, Q);
-  delay(1 + H);
+  if (currentMillis - buzzerPreviousMillis > buzzerInterval) {
+    buzzerPreviousMillis = currentMillis;
+    tone(12, 220, 600);
+  }
 }
